@@ -21,40 +21,70 @@ function playRound(playerSelection, computerSelection) {
     let playerChoice = playerSelection.toLowerCase();
 
     if (playerChoice === computerSelection) {
-        console.log("It's a tie!");
-        return "It's a tie!";
+        console.log("This round's a tie!");
+        ties += 1;
+        return "This round's a tie!";
     } else if (playerChoice === 'rock' && computerSelection === 'paper') {
-        console.log("You Lose! Paper beats Rock");
-        return "You Lose! Paper beats Rock";
+        console.log("You Lost This Round! Paper beats Rock");
+        cWins += 1;
+        return "You Lost This Round! Paper beats Rock";
     } else if (playerChoice === 'rock' && computerSelection === 'scissors') {
-        console.log("You Win! Rock beats Scissors");
-        return "You Win! Rock beats Scissors";
+        console.log("You Won This Round! Rock beats Scissors");
+        pWins += 1;
+        return "You Won This Round! Rock beats Scissors";
     } else if (playerChoice === 'paper' && computerSelection === 'rock') {
-        console.log("You Win! Paper beats Rock");
-        return "You Win! Paper beats Rock";
+        console.log("You Won This Round! Paper beats Rock");
+        pWins += 1;
+        return "You Won This Round! Paper beats Rock";
     } else if (playerChoice === 'paper' && computerSelection === 'scissors') {
-        console.log("You Lose! Scissors beats Paper");
-        return "You Lose! Scissors beats Paper";
+        console.log("You Lost This Round! Scissors beats Paper");
+        cWins += 1;
+        return "You Lost This Round! Scissors beats Paper";
     } else if (playerChoice === 'scissors' && computerSelection === 'rock') {
-        console.log("You Lose! Rock beats Scissors");
-        return "You Lose! Rock beats Scissors";
+        console.log("You Lost This Round! Rock beats Scissors");
+        cWins += 1;
+        return "You Lost This Round! Rock beats Scissors";
     } else if (playerChoice === 'scissors' && computerSelection === 'paper') {
-        console.log("You Win! Scissors beats Paper");
-        return "You Win! Scissors beats Paper"
+        console.log("You Won This Round! Scissors beats Paper");
+        pWins += 1;
+        return "You Won This Round! Scissors beats Paper";
     } else {
         console.log("Something went wrong");
-        return "Something went wrong"
+        return "Something went wrong";
     }
 }
 
-// play a 5 round game that keeps score and reports a winner or loser at the end. 
-// 
+
+// for keeping score - pWins is total player wins, cWins is total computer wins.
+// Note to self: Figure out how to do this without global variables.
+let pWins = 0;
+let cWins = 0;
+let ties = 0;
+
+
+// play a 5 round game that keeps score and reports a winner or loser at the end.  
 function game() {
+    
+    
+    // play five rounds
     for (let i = 0; i < 5; i++) {
         let userChoice = prompt("Enter choice:", 'rock, paper, or scissors');
         console.log("userChoice: ", userChoice);
         playRound(userChoice, computerPlay());
     }
+
+    // Choose final score message
+    let finalScoreMessage;
+    if (pWins > cWins) {
+        finalScoreMessage = "You Won The Game! \nFinal Score: You: " + pWins + "  Computer: " + cWins + "  Ties: " + ties;
+    } else if (cWins > pWins) {
+        finalScoreMessage = "You Lost The Game! \nFinal Score: You: " + pWins + "  Computer: " + cWins + "  Ties: " + ties;
+    } else {
+        finalScoreMessage = "The Game Ended In A Draw! \nFinal Score: You: " + pWins + "  Computer: " + cWins + "  Ties: " + ties;
+    }
+
+    // display final score message (to the console)
+    console.log(finalScoreMessage);
 }
 
 
