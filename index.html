@@ -4,10 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js.js"></script>
+    <script src="js.js" defer></script>
     <title>Rock Paper Scissors - T.O.P. Project.</title>
+    <style>
+        #content {
+            height: 50px;
+            margin-bottom: 12px;
+        }
+        #hands, #results {
+            margin: 4px 0px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="container">
+        <h1>Rock Paper Scissors</h1>
+        
+        <h3>Score</h3>
+        <div id="score">You: &nbsp;&nbsp;&nbsp;Computer: &nbsp;&nbsp;&nbsp;Ties: &nbsp;</div>
+        
+        <h3 id="round">Round: </h3>
+        <div id="content">
+            <div id="hands"></div>
+            <div id="results">&nbsp;</div>
+        </div>
+    </div>
+
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
 </body>
 </html>
