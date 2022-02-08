@@ -16,6 +16,7 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
     // makes player's choice case-insensitive
     let playerChoice = playerSelection.toLowerCase();
+        
         console.log("--before--pWins:", pWins, 
         "cWins:", cWins, "ties:", ties, "rounds:", rounds,
         "score:", score);
@@ -37,7 +38,7 @@ function playRound(playerSelection, computerSelection) {
 
         if (cWins === 5 || pWins === 5) {
             displayWinner(pWins, cWins, results);
-            
+            buttons.forEach(button => button.disabled = true);
         }
     } else if (playerChoice === 'rock' && computerSelection === 'paper') {   
         console.log("playerChoice: ", playerChoice);
@@ -54,7 +55,7 @@ function playRound(playerSelection, computerSelection) {
         
         if (cWins === 5 || pWins === 5) {
             displayWinner(pWins, cWins, results);            
-            
+            buttons.forEach(button => button.disabled = true);
         }
     } else if (playerChoice === 'rock' && computerSelection === 'scissors') {
         console.log("playerChoice: ", playerChoice);
@@ -71,7 +72,7 @@ function playRound(playerSelection, computerSelection) {
         
         if (cWins === 5 || pWins === 5) {
             displayWinner(pWins, cWins, results);            
-            
+            buttons.forEach(button => button.disabled = true);
         }
     } else if (playerChoice === 'paper' && computerSelection === 'rock') {
         console.log("playerChoice: ", playerChoice);
@@ -88,7 +89,7 @@ function playRound(playerSelection, computerSelection) {
         
         if (cWins === 5 || pWins === 5) {
             displayWinner(pWins, cWins, results);            
-            
+            buttons.forEach(button => button.disabled = true);
         }
     } else if (playerChoice === 'paper' && computerSelection === 'scissors') {
         console.log("playerChoice: ", playerChoice);
@@ -105,7 +106,7 @@ function playRound(playerSelection, computerSelection) {
         
         if (cWins === 5 || pWins === 5) {
             displayWinner(pWins, cWins, results);            
-            
+            buttons.forEach(button => button.disabled = true);
         }
     } else if (playerChoice === 'scissors' && computerSelection === 'rock') {
         console.log("playerChoice: ", playerChoice);
@@ -122,7 +123,7 @@ function playRound(playerSelection, computerSelection) {
         
         if (cWins === 5 || pWins === 5) {
             displayWinner(pWins, cWins, results);            
-            
+            buttons.forEach(button => button.disabled = true);
         }
     } else if (playerChoice === 'scissors' && computerSelection === 'paper') {
         console.log("playerChoice: ", playerChoice);
@@ -139,7 +140,7 @@ function playRound(playerSelection, computerSelection) {
         
         if (cWins === 5 || pWins === 5) {
             displayWinner(pWins, cWins, results);            
-            
+            buttons.forEach(button => button.disabled = true);
         }
     } else {
         results.textContent = "Something went wrong";
@@ -168,7 +169,7 @@ function displayWinner(pWins, cWins, results) {
     }
 }
 
-function resetScores() {
+function reset() {
     pWins = 0;
     cWins = 0;
     ties = 0;
@@ -178,6 +179,8 @@ function resetScores() {
     displayScore(score, pWins, cWins, ties);
     hands.textContent = `You:   Computer:   Ties:`;
     results.textContent = "";
+
+    buttons.forEach(button => button.disabled = false);
 }
 
 let pWins = 0;
@@ -199,10 +202,8 @@ buttons.forEach((button) => {
     });
 });
 
-resetBtn.addEventListener('click', () => resetScores());
 
-// need to figure out how to stop the rock paper and scissors
-// buttons from triggering event handler once the game is won.
-// basically.. how to stop the game when 5 wins are reached.
+resetBtn.addEventListener('click', () => reset());
+
 
 
